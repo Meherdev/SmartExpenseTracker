@@ -1,0 +1,1 @@
+export type ExpenseCategories = 'airlines' | 'commute' | 'gas' | 'groceries' | 'hotel' | 'rental' | 'services' | 'taxi' | 'utilities' | 'others'
