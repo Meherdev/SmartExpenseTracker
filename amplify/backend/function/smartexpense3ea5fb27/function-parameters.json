@@ -1,0 +1,36 @@
+{
+  "lambdaLayers": [],
+  "permissions": {
+    "auth": {
+      "smartexpense69a3c01e": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "storage": {
+      "Expense:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "function": {
+      "smartexpenseeff4551e": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "api": {
+      "smartexpense": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    }
+  }
+}

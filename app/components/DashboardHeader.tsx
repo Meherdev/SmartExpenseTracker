@@ -1,19 +1,37 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { SpaceH } from './Space';
 import { moderateScale } from '../theme/scaling';
 import { Colors } from '@/constants/Colors';
+import { useAuthenticator } from '@aws-amplify/ui-react-native';
+import { fetchUserAttributes } from 'aws-amplify/auth';
 
-interface DashboardHeaderProps {
-    name: string;
-}
+export default function DashboardHeader() {
+  const {signOut} = useAuthenticator();
+  const [name, setName] = useState<string | undefined>('');
+  
+  // useEffect(() => {
+  //   fetchTotalExpenses()
+  // }, [filter])
+  
 
-export default function DashboardHeader({name}: DashboardHeaderProps) {
+  useEffect(() => {
+    (async () => {
+      const {name} = await fetchUserAttributes();
+      setName(name);
+    })()
+  }, [])
+  
   return (
       <View style={styles.header}>
         <Image style={styles.avatar} source={require('@/assets/images/cat.png')}/>
         <SpaceH size='l'/>
-        <Text style={styles.headerText}>Hello {name} !</Text>
+        <Text style={styles.headerText}>Hello {name}!</Text>
+        <TouchableOpacity onPress={signOut} style={{marginLeft: 'auto'}}>
+          <Text style={styles.logoutBtn}>
+            Logout
+          </Text>
+        </TouchableOpacity>
       </View>
   )
 }
@@ -49,5 +67,9 @@ const styles = StyleSheet.create({
       fontSize: moderateScale(42),
       fontWeight: '700',
       color: Colors.text
-  }
+  },
+    logoutBtn: {
+      color: Colors.secondary,
+      fontWeight: '600'
+    }
 })

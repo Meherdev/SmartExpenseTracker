@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "auth": {
+      "smartexpense69a3c01e": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "storage": {
+      "s3b94825ca": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "Expense:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "function": {
+      "S3Trigger34c4a3b0": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "api": {
+      "smartexpense": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

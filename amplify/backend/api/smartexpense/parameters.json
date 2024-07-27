@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "smartexpense",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2024-07-24T06:36:22.308Z",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authsmartexpense69a3c01e",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

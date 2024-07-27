@@ -1,0 +1,16 @@
+{
+    "resourceName": "identifyText50e3253e",
+    "identifyPolicyName": "identifyPolicy50e3253e",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "adminAuthProtected": "DISALLOW",
+    "adminGuestProtected": "DISALLOW",
+    "identifyType": "identifyText",
+    "identifyDoc": true,
+    "access": "auth | authAndGuest",
+    "format": "PLAIN | FORM | TABLE | ALL"  
+}

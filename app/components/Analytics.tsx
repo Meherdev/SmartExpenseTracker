@@ -1,11 +1,44 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BarChart } from 'react-native-gifted-charts'
 import { Colors } from '@/constants/Colors'
 import { moderateScale } from '../theme/scaling'
 import { SpaceV } from './Space'
+import { getCurrentUser } from 'aws-amplify/auth'
+import * as queries from './../../src/graphql/queries';
+import { generateClient } from 'aws-amplify/api';
 
-export default function Analytics() {
+const client = generateClient();
+
+interface AnlayticsProps {
+  filter: string
+}
+
+export default function Analytics({filter}: AnlayticsProps) {
+
+  const fetchGraphData = async () => {
+      console.log('====================================');
+      console.log("fetching total expense value");
+      console.log('====================================');
+      try {
+        const {userId} = await getCurrentUser();
+  
+        const {data: {getExpensesByFilter}} = await client.graphql({
+          query: queries.getExpensesByFilter,
+          variables: {userId, filter}
+        })
+        if (getExpensesByFilter) {
+          console.log("fetched graph data", getExpensesByFilter);
+        }
+      } catch (err) {
+        console.log('Error fetching total expense value ::::', err);
+      }  
+  }
+
+  useEffect(() => {
+    fetchGraphData();
+  }, [filter])
+  
   return (
     <View style={styles.container}>
       <SpaceV size='m' />

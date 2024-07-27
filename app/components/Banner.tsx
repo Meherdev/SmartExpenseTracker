@@ -3,16 +3,20 @@ import React from 'react'
 import { moderateScale } from '../theme/scaling'
 import { Colors } from '@/constants/Colors'
 import { SpaceV } from './Space'
-import { router } from 'expo-router'
+import { router } from 'expo-router';
 
-export default function Banner() {
+interface BannerProps {
+  val: number;
+}
+
+export default function Banner({val}: BannerProps) {
 
   return (
     <View style={styles.container}>
       <View>
         <Text style={styles.bannerText}>Total Expenses</Text>
         <SpaceV size='m' />
-        <Text style={styles.bannerMainText}>$ 1000</Text>
+        <Text style={styles.bannerMainText}>$ {val}</Text>
       </View>
       <TouchableOpacity onPress={() => { router.push('screens/expenses')}}>
         <Text style={styles.link}>

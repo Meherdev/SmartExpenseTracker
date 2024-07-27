@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         borderRadius: moderateScale(10),
       },    
     btnText: {
-        color: Colors.text,
+        color: Colors.background,
         fontSize: moderateScale(18),
         fontWeight: '700'
     },

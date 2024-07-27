@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "storage": {
+      "Expense:@model(appsync)": [
+        "create"
+      ]
+    },
+    "api": {
+      "smartexpense": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    }
+  }
+}
